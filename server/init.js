@@ -17,7 +17,6 @@ function addRolesToVisitors() {
 
 
 function uploadProduct(product) {
-	console.log("called");
 	check(product, Object);
 	check(product.type, String);
 	check(product.brand, String);
@@ -27,8 +26,8 @@ function uploadProduct(product) {
 	check(product.title, String);
 	check(product.price, String);
 	var user = Meteor.userId();
-	_.extend(product, {userId: user});
-	console.log(product);
+	var date = new Date();
+	_.extend(product, {userId: user, dateSubmitted: date});
 	UserProducts.insert(product, function(error, result) {
 		if (error) {
 			return error;
@@ -37,6 +36,11 @@ function uploadProduct(product) {
 			return result._id;
 		}
 	});
+};
+
+function sendProductPostingEmails(userId) {
+	//email user
+	//email admins
 };
 
 Meteor.methods({
