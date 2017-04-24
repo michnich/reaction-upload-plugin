@@ -3,7 +3,7 @@ import { Packages, Shops, Accounts } from "/lib/collections";
 import { Hooks, Reaction } from "/server/api";
 import { UserProducts } from "../lib/collections";
 
-
+/*only logged in users can access addProduct route*/
 function addRolesToVisitors() {
   // Add the about permission to all default roles since it's available to all
   const shop = Shops.findOne(Reaction.getShopId());
@@ -15,7 +15,7 @@ function addRolesToVisitors() {
   });
 };
 
-
+/*uploads a user product, adds date and user to passed product data*/
 function uploadProduct(product) {
 	check(product, Object);
 	check(product.type, String);
@@ -37,12 +37,6 @@ function uploadProduct(product) {
 		}
 	});
 };
-
-function sendProductPostingEmails(userId) {
-	//email user
-	//email admins
-};
-
 Meteor.methods({
   "product/uploadProduct": uploadProduct
 });
