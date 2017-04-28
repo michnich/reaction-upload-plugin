@@ -27,7 +27,7 @@ function uploadProduct(product) {
 	check(product.price, String);
 	var user = Meteor.userId();
 	var date = new Date();
-	_.extend(product, {userId: user, dateSubmitted: date});
+	_.extend(product, {userId: user, published: false, dateSubmitted: date});
 	UserProducts.insert(product, function(error, result) {
 		if (error) {
 			return error;
