@@ -1,4 +1,5 @@
 import { check } from "meteor/check";
+import { Meteor } from 'meteor/meteor';
 import { Packages, Shops, Accounts } from "/lib/collections";
 import { Hooks, Reaction } from "/server/api";
 import { UserProducts } from "../lib/collections";
@@ -41,3 +42,11 @@ Meteor.methods({
   "product/uploadProduct": uploadProduct
 });
 
+Meteor.publish('allProducts', function() {
+	return UserProducts.find({});
+});
+
+Meteor.publish('userProductsByUser', function(id) {
+	check(id, String);
+	return UserProducts.find({"userId": id});
+});

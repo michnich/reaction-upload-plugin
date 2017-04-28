@@ -8,6 +8,10 @@ const Collections = {
 
 Template.registerHelper('Collections', Collections);
 
+Template.addProduct.rendered = function() {
+  Meteor.subscribe('allProducts');
+};
+
 Template.addProduct.events({
   'submit form': function(e) {
       e.preventDefault();
@@ -27,7 +31,6 @@ Template.addProduct.events({
         price: $('#price').val(),
         image: imageArray
       }
-
       Meteor.call('product/uploadProduct', product, function(error, id){
         if (error){
           alert(error.reason);
