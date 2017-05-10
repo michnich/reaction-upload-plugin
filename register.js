@@ -11,6 +11,12 @@ Reaction.registerPackage({
       name: "addProduct",
       template: "addProduct",
       workflow: "coreWorkflow"
+    },
+    {
+      route: "products",
+      name: "shop",
+      template: "shop",
+      workflow: "coreWorkflow"
     }
   ],
   layout: [{
