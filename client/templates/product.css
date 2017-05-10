@@ -38,17 +38,15 @@
   margin-top: 29px;
   margin-left: 2em;
   margin-right: 2em;
-  padding-right: 2em;
+  padding-right: 2em !important;
   border-right: 1px solid darkgrey;
 }
 
 .tag-link-list li {
   display: block;
   margin-bottom: 1em;
-}
-
-.tag-group {
-    text-align: right;
+  margin-right: 0;
+  margin-left: 0;
 }
 
 .header-header {
